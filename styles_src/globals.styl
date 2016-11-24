@@ -1,0 +1,38 @@
+colBlack = black
+colWhite = white
+
+// http://www.dafont.com/roboto.font
+@font-face
+   font-family Roboto
+   font-style normal
+   src url('../fonts/Roboto-Regular.ttf')
+@font-face
+   font-family Roboto
+   font-style bold
+   src url('../fonts/Roboto-Bold.ttf')
+
+// http://www.dafont.com/thinking-of-betty.font
+@font-face
+   font-family Betty
+   font-style normal
+   src url('../fonts/Thinking_of_Betty.ttf')
+
+vendor1(prop, arg1)
+    -webkit-{prop} arg1
+    -moz-{prop} arg1
+    -ms-{prop} arg1
+    -o-{prop} arg1
+    {prop} arg1
+
+vendor4(prop, arg1, arg2, arg3, arg4)
+    -webkit-{prop} arg1 arg2 arg3 arg4
+    -moz-{prop} arg1 arg2 arg3 arg4
+    -ms-{prop} arg1 arg2 arg3 arg4
+    -o-{prop} arg1 arg2 arg3 arg4
+    {prop} arg1 arg2 arg3 arg4
+
+transition-duration(duration)
+    vendor1('transition-duration', duration)
+
+drop-shadow(xaxis, yaxis, blur, alpha)
+    vendor4('box-shadow', xaxis, yaxis, blur, rgba(0, 0, 0, alpha))

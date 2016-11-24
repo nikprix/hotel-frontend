@@ -1,0 +1,250 @@
+@import 'globals.styl'
+
+// General setup
+html, body {
+    height: 100%
+}
+
+body {
+    background-color: colWhite
+    // http://www.colourlovers.com/pattern/50713/pat
+    background-image: url("../images/bg.png")
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PixelCowboy'
+    font-weight: normal
+}
+
+.dcenter {
+    text-align: center
+}
+
+// Navbar
+.dmenu-item {
+    background-color: colBlack
+    text-align: center
+    height: 64px
+    transition-duration(0.2s)
+    drop-shadow(0px, 2px, 2px, 0.8)
+
+    a {
+        transition-duration(0.2s)
+        font-family: 'Roboto'
+        font-weight: bold
+        font-size: 1.5em
+        color: colWhite
+        text-transform: uppercase
+        text-decoration: none
+        line-height: 64px
+        display: block
+        height: 100%
+        width: 100%
+    }
+    a:focus {
+        color: colBlack
+        background-color: colWhite
+        text-transform: uppercase
+        outline: none
+    }
+}
+.dmenu-item:hover, .dmenu-item:focus {
+    background-color: colWhite
+
+    a {
+        color: colBlack
+        text-transform: uppercase
+    }
+}
+
+#dhometitle {
+    font-family: 'Betty'
+    font-weight: normal
+    font-size: 2em
+    -webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+    text-rendering: optimizeLegibility !important
+    -webkit-font-smoothing: antialiased !important
+    text-transform: none
+}
+
+// Panel
+.dpanel {
+    font-family: 'PixelCowboy'
+    color: colBlack
+    background-color: colWhite
+    border: 2px solid colBlack
+    drop-shadow(0px, 2px, 2px, 0.8)
+
+    p {
+        margin-top: 0px
+    }
+
+    .dpanelheader {
+        color: colWhite
+        background-color: colBlack
+        padding: 16px
+        font-family: 'Roboto'
+        font-weight: bold
+        font-size: 1.5em
+        text-align: center
+    }
+
+    .dpanelcontent {
+        font-family: 'Roboto'
+        padding: 16px
+
+        img {
+            max-width: 100%
+        }
+    }
+
+    .dpanelaction {
+        text-align: center
+        padding-bottom: 16px
+        padding-left: 16px
+        padding-right: 16px
+    }
+
+    .dpanelbutton {
+        transition-duration(0.2s)
+        font-family: 'Roboto'
+        font-weight: bold
+        color: colBlack
+        background-color: colWhite
+        border: 2px solid colBlack
+        text-transform: uppercase
+        text-decoration: none
+        display: inline-block
+        height: 100%
+        padding: 8px
+    }
+    .dpanelbutton:hover, .dpanelbutton:focus  {
+        transition-duration(0.2s)
+        color: colWhite
+        background-color: colBlack
+        outline: none
+    }
+}
+
+.dpanelcontainer {
+    padding: 12px
+}
+
+.dpanelgrid {
+    padding: 6px
+}
+.dpanelgridcenter {
+    padding: 6px
+    text-align: center
+    justify-content: center;
+}
+
+.pure-g > div {
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+}
+
+// Title
+.dtitle {
+    font-family: 'Roboto'
+    font-weight: bold
+    font-size: 1.5em
+    color: colWhite
+    background-color: colBlack
+    text-transform: uppercase
+    text-decoration: none
+    display: inline-block
+    height: 100%
+    padding: 16px
+    margin-left: 8px
+    margin-right: 8px
+    margin-top: 16px
+    drop-shadow(0px, 2px, 2px, 0.8)
+}
+.dtitlebutton {
+    transition-duration(0.2s)
+    font-family: 'Roboto'
+    font-weight: bold
+    color: colBlack
+    background-color: colWhite
+    border: 2px solid colBlack
+    text-transform: uppercase
+    text-decoration: none
+    display: inline-block
+    padding: 14px
+}
+.dtitlebutton:hover, .dtitlebutton:focus  {
+    transition-duration(0.2s)
+    color: colWhite
+    background-color: colBlack
+    outline: none
+}
+
+// Forms
+.dinputtable {
+    display: inline-block
+    text-align: right
+}
+
+.dinputrow {
+    margin-bottom: 12px
+
+    span {
+        float: left
+        line-height: 2em
+        padding-right: 4px
+    }
+
+    input, select {
+        padding: 4px
+        transition-duration(0.2s)
+        color: colBlack
+        border: 1px solid colWhite
+        border-bottom-color: colBlack
+    }
+
+    input:focus, select:focus {
+        transition-duration(0.2s)
+        background-color: colWhite
+        border: 1px solid colBlack
+        outline: none
+    }
+}
+
+.dinputrowradio {
+    padding-top: 4px
+    margin-bottom: 12px
+
+    span {
+        float: left
+        padding-right: 4px
+    }
+
+    .dradiorow {
+        display: inline-block
+    }
+}
+
+.dfiltercriteria {
+    transition-duration(0.2s)
+    font-family: 'Roboto'
+    font-size: 0.8em
+    color: colWhite
+    background-color: colBlack
+    border: 2px solid colBlack
+    text-transform: uppercase
+    text-decoration: none
+    display: inline-block
+    height: 100%
+    padding: 8px
+    margin: 16px
+    margin-top: 4px
+}
+.dfiltercriteria:hover, .dfiltercriteria:focus  {
+    transition-duration(0.2s)
+    color: colBlack
+    background-color: colWhite
+    outline: none
+}

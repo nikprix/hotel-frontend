@@ -1,0 +1,63 @@
+<div class="dpanelgridcenter pure-g">
+
+    <div class="dpanelcontainer pure-u-1 pure-u-lg-1-2 pure-u-md-2-3">
+        <div class="dpanel">
+            <div class="dpanelheader">Login</div>
+
+
+            <div class="dpanelcontent">
+                <div class="form-horizontal">
+
+
+                    <div class="form-group"
+                         ng-class="{ 'has-error': hotelLogin.username.$touched && hotelLogin.username.$invalid || hotelLogin.$submitted }">
+
+                        <label for="username" class="col-sm-4 control-label">Username</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Username"
+                                   ng-model="auth.username"
+                                   required/>
+
+                            <!-- Below is an example of loading ng-messages from external file - messages.html -->
+                            <div ng-show="loginError" ng-messages="hotelLogin.username.$error" class="help-block"
+                                 role="alert"
+                                 ng-if="hotelLogin.$submitted || hotelLogin.username.$touched" ng-messages-multiple>
+                                <div ng-messages-include="partials/messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group"
+                         ng-class="{ 'has-error': hotelLogin.password.$touched && hotelLogin.password.$invalid || hotelLogin.$submitted }">
+                        <label for="password" class="col-sm-4 control-label">Password</label>
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control" name="title" id="password"
+                                   placeholder="Password"
+                                   ng-model="auth.password"
+                                   required/>
+
+                            <!-- Below is an example of loading ng-messages from external file - messages.html -->
+                            <div ng-messages="hotelLogin.password.$error" class="help-block" role="alert"
+                                 ng-if="hotelLogin.$submitted || hotelLogin.password.$touched" ng-messages-multiple>
+                                <div ng-messages-include="partials/messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-12">
+                            <input type="submit" class="dpanelbutton"
+                                   ng-disabled="hotelLogin.$invalid"
+                                   value="Login"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

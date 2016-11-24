@@ -1,0 +1,162 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+}
+
+.header {
+    padding: 15px;
+}
+
+.header img {
+    display: inline-block;
+}
+
+.header h1 {
+    display: inline-block;
+}
+
+.newBook p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.newBook h1{
+    color: #444;
+}
+
+.main {
+    background-color: #f2f2f2;
+    padding: 40px 0;
+}
+
+.main h1 {
+    color: #F65A5B;
+    font-size: 64px;
+    margin: 0 0 80px 0;
+    padding: 20px 0;
+    line-height: 60px;
+    width: 50%;
+}
+
+.main h2 {
+    background-color: #DDDDDD;
+    color: #999999;
+    font-size: 20px;
+    margin: 0 0 40px 0;
+    padding: 20px 0;
+}
+
+.viewBook {
+    margin-top: 20px;
+}
+
+a.nodecoration {
+    text-decoration: none;
+}
+
+.thumbnail {
+    border: 0px;
+    position: relative;
+    padding: 50px;
+    border-radius: 0;
+    margin-bottom: 50px;
+}
+
+.thumbnail img {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    max-width: 100%;
+}
+
+.thumbnail td:nth-of-type(1) {
+    width: 15%;
+}
+
+.title,
+.date {
+    color: #444;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.date {
+    color: #a3a3a3;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.price {
+    background-color: #39D1B4;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-weight: 200;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    width: 80px;
+    position: absolute;
+    top: -40px;
+    right: 20px;
+}
+
+.footer {
+    text-align: center;
+    margin: 80px 0 110px;
+}
+
+.footer h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+.footer img {
+    margin: 0 10px;
+}
+
+/* Form validation styling */
+.css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+}
+
+.css-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+}
+
+/* Customizing validation messages */
+/*.ng-invalid {*/
+    /*border-color: #FA787E;*/
+    /*border-width: 2px;*/
+/*}*/
+.error {
+    color: #FA787E;
+}
+.error + span {
+    color: #FA787E;
+}
+
+.md-dialog-container {
+    top: -200px !important;
+}
+
+.md-dialog {
+    max-width: 20%;
+    max-height: 20%;
+}
+
+.md-dialog .md-dialog-content {
+    padding: 24px;
+}
+
+.md-button.md-default-theme.md-primary, .md-button.md-primary {
+    color: #fff !important;
+    background-color: #337ab7 !important;
+    border-color: #2e6da4;
+}
+
+
+

@@ -1,0 +1,373 @@
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  src: url("../fonts/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: Roboto;
+  font-style: bold;
+  src: url("../fonts/Roboto-Bold.ttf");
+}
+@font-face {
+  font-family: Betty;
+  font-style: normal;
+  src: url("../fonts/Thinking_of_Betty.ttf");
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  background-color: #fff;
+  background-image: url("../images/bg.png");
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'PixelCowboy';
+  font-weight: normal;
+}
+.dcenter {
+  text-align: center;
+}
+.dmenu-item {
+  background-color: #000;
+  text-align: center;
+  height: 64px;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  -ms-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  -o-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+}
+.dmenu-item a {
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 64px;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+.dmenu-item a:focus {
+  color: #000;
+  background-color: #fff;
+  text-transform: uppercase;
+  outline: none;
+}
+.dmenu-item:hover,
+.dmenu-item:focus {
+  background-color: #fff;
+}
+.dmenu-item:hover a,
+.dmenu-item:focus a {
+  color: #000;
+  text-transform: uppercase;
+}
+#dhometitle {
+  font-family: 'Betty';
+  font-weight: normal;
+  font-size: 2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-transform: none;
+}
+.dpanel {
+  font-family: 'PixelCowboy';
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #000;
+  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  -ms-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  -o-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+}
+.dpanel p {
+  margin-top: 0px;
+}
+.dpanel .dpanelheader {
+  color: #fff;
+  background-color: #000;
+  padding: 16px;
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+}
+.dpanel .dpanelcontent {
+  font-family: 'Roboto';
+  padding: 16px;
+}
+.dpanel .dpanelcontent img {
+  max-width: 100%;
+}
+.dpanel .dpanelaction {
+  text-align: center;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.dpanel .dpanelbutton {
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  font-family: 'Roboto';
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #000;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  height: 100%;
+  padding: 8px;
+}
+.dpanel .dpanelbutton:hover,
+.dpanel .dpanelbutton:focus {
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  color: #fff;
+  background-color: #000;
+  outline: none;
+}
+.dpanelcontainer {
+  padding: 12px;
+}
+.dpanelgrid {
+  padding: 6px;
+}
+.dpanelgridcenter {
+  padding: 6px;
+  text-align: center;
+  justify-content: center;
+}
+.pure-g > div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.dtitle {
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: #000;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  height: 100%;
+  padding: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 16px;
+  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  -moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  -ms-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  -o-box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
+}
+.dtitlebutton {
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  font-family: 'Roboto';
+  font-weight: bold;
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #000;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  padding: 14px;
+}
+.dtitlebutton:hover,
+.dtitlebutton:focus {
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  color: #fff;
+  background-color: #000;
+  outline: none;
+}
+.dinputtable {
+  display: inline-block;
+  text-align: right;
+}
+.dinputrow {
+  margin-bottom: 12px;
+}
+.dinputrow span {
+  float: left;
+  line-height: 2em;
+  padding-right: 4px;
+}
+.dinputrow input,
+.dinputrow select {
+  padding: 4px;
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  color: #000;
+  border: 1px solid #fff;
+  border-bottom-color: #000;
+}
+.dinputrow input:focus,
+.dinputrow select:focus {
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  background-color: #fff;
+  border: 1px solid #000;
+  outline: none;
+}
+.dinputrowradio {
+  padding-top: 4px;
+  margin-bottom: 12px;
+}
+.dinputrowradio span {
+  float: left;
+  padding-right: 4px;
+}
+.dinputrowradio .dradiorow {
+  display: inline-block;
+}
+.dfiltercriteria {
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  font-family: 'Roboto';
+  font-size: 0.8em;
+  color: #fff;
+  background-color: #000;
+  border: 2px solid #000;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  height: 100%;
+  padding: 8px;
+  margin: 16px;
+  margin-top: 4px;
+}
+.dfiltercriteria:hover,
+.dfiltercriteria:focus {
+  -webkit-transition-duration: 0.2s;
+  -moz-transition-duration: 0.2s;
+  -ms-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  color: #000;
+  background-color: #fff;
+  outline: none;
+}
+.form-horizontal {
+}
+
+
+/* Customizing validation messages */
+/*.ng-invalid {*/
+/*border-color: #FA787E;*/
+/*border-width: 2px;*/
+/*}*/
+.error {
+  color: #FA787E;
+}
+.error + span {
+  color: #FA787E;
+}
+
+.md-dialog-container {
+  top: -200px !important;
+}
+
+.md-dialog.md-transition-in, .md-dialog.md-transition-out {
+  border-radius: 1px !important;
+  font-family: 'Roboto' !important;
+}
+
+.md-title .ng-binding {
+  font-family: 'Roboto' !important;
+}
+
+.md-dialog {
+  max-width: 20%;
+  max-height: 20%;
+}
+
+.md-dialog .md-dialog-content {
+  padding: 24px;
+}
+
+.md-button.md-default-theme.md-primary, .md-button.md-primary {
+  color: #ffffff !important;
+  background-color: #000000 !important;
+  font-family: 'Roboto' !important;
+  font-weight: bold;
+  border: 2px solid #000;
+  border-radius: 3px !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  height: 100%;
+}
+
+.thumbnail {
+  border: 0px;
+  position: relative;
+  padding: 50px;
+  border-radius: 0;
+  margin-bottom: 50px;
+  background-color: inherit;
+}
+
+.thumbnail img {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  max-width: 100%;
+}
+
+.thumbnail td:nth-of-type(1) {
+  width: 15%;
+}
+
+.dpanelcontent td {
+  text-align: left;
+  padding-right: 30px;
+}
+
+.dpanelcontent tr {
+  text-align: left;
+}

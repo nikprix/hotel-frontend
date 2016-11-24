@@ -1,0 +1,15 @@
+@font-face {
+  font-family: Roboto;
+  font-style: normal;
+  src: url("../fonts/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: Roboto;
+  font-style: bold;
+  src: url("../fonts/Roboto-Bold.ttf");
+}
+@font-face {
+  font-family: Betty;
+  font-style: normal;
+  src: url("../fonts/Thinking_of_Betty.ttf");
+}

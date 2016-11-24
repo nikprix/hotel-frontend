@@ -1,0 +1,73 @@
+
+<div class="dpanelgridcenter pure-g">
+        <div class="dpanelcontainer pure-u-1 pure-u-lg-1-2 pure-u-md-2-3">
+            <div class="dpanel">
+                <div class="dpanelheader">Search</div>
+                <div class="dpanelcontent" style="padding-bottom: 0px;">
+                    <div class="dinputtable">
+                        <div class="dinputrow">
+                            <span>Starting:</span>
+                            <input type="text" id="starting"></input>
+                        </div>
+                        <div class="dinputrow">
+                            <span>Ending:</span>
+                            <input type="text" id="ending"></input>
+                        </div>
+                        <div class="dinputrow">
+                            <span>Room name:</span>
+                            <input type="text"></input>
+                        </div>
+                        <div class="dinputrow">
+                            <span>Highest rate:</span>
+                            <input type="text"></input>
+                        </div>
+                        <div class="dinputrow">
+                            <span>Guests:</span>
+                            <input type="text"></input>
+                        </div>
+                        <div class="dinputrow">
+                            <span>Add type:</span>
+                            <select name="cars">
+                                <option value="volvo">Double bed</option>
+                                <option value="saab">Triple bed</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="#" class="dfiltercriteria">
+                        [X] Single bed
+                    </a>
+                </div>
+                <div class="dpanelaction">
+                    <a href="#" class="dpanelbutton">Clear</a>
+                    <a href="#" class="dpanelbutton">Apply</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dcenter">
+        <span class="dtitle">Available rooms</span>
+        <a href="#" class="dtitle dtitlebutton">Add new</a>
+    </div>
+
+
+
+
+    <div class="dpanelgridcenter pure-g">
+        <div ng-repeat="room in rooms" class="dpanelcontainer pure-u-1 pure-u-md-1-3">
+            <div class="dpanel">
+                <div class="dpanelheader">{{ room.roomNumber | uppercase }}</div>
+                <div class="dpanelcontent">
+                    <img ng-src="{{ room.image }}">
+                    <p>{{ room.roomType }}</p>
+                </div>
+                <div class="dpanelaction">
+                    <a ui-sref="viewRoom({roomNumber:room.roomNumber})" class="dpanelbutton">View details</a>
+                    <a ui-sref="newBooking" class="dpanelbutton">Reserve</a>
+                </div>
+            </div>
+        </div>
+    </div>
+

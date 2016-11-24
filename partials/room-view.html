@@ -1,0 +1,32 @@
+<div class="dpanelgridcenter pure-g">
+    <div class="pure-u-1 thumbnail">
+        <div class="dpanel">
+            <div class="dpanelheader">Room Number: {{ room.roomNumber | uppercase }}</div>
+            <div class="dpanelcontent">
+                <img ng-src="{{ room.image }}">
+
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>Price</td>
+                        <td>{{ room.roomPrice | currency}}</td>
+                    </tr>
+                    <tr>
+                        <td>Room type</td>
+                        <td>{{ room.roomType }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>{{ room.description }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="dpanelaction">
+                <a ui-sref="editRoom({roomNumber:room.roomNumber})" class="dpanelbutton">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
