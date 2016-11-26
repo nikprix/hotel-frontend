@@ -1,239 +1,116 @@
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.roomNumber.$touched && roomForm.roomNumber.$invalid || roomForm.$submitted }">
-    <label for="roomNumber" class="col-sm-2 control-label">Room Number</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="roomNumber" id="roomNumber" placeholder="Room Number"
-               ng-model="room.roomNumber"
-               ng-minlength="1"
-               ng-disabled="isEdit(true)"
-               ng-maxlength="8"
-               integer
-               required/>
+<div class="dpanelgridcenter pure-g">
+    <div class="dpanelcontainer pure-u-1 pure-u-lg-1-2 pure-u-md-2-3">
+        <div class="dpanel">
+            <div class="dpanelheader">Room Details</div>
+            <div class="dpanelcontent" style="padding-bottom: 0px;">
+                <div class="">
 
-        <!-- Below is an example of showing ng-messages inline -->
-        <div ng-messages="roomForm.roomNumber.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.isbn.$touched" ng-messages-multiple>
-            <span ng-message="required">Required field!</span>
-            <span ng-message="integer">The value is not a valid integer!</span>
-            <span ng-message="minlength">Entered value is too short.</span>
-            <span ng-message="maxlength">Entered value is too long.</span>
-        </div>
-    </div>
-</div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error': roomForm.roomNumber.$touched && roomForm.roomNumber.$invalid || roomForm.$submitted }">
+                        <label for="roomNumber" class="col-sm-3 control-label">Room Number</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="roomNumber" id="roomNumber" placeholder="Room Number"
+                                   ng-model="room.roomNumber"
+                                   ng-minlength="1"
+                                   ng-disabled="isEdit(true)"
+                                   ng-maxlength="8"
+                                   integer
+                                   required/>
 
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.title.$touched && roomForm.title.$invalid || roomForm.$submitted }">
-    <label for="title" class="col-sm-2 control-label">Title</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="title" id="title" placeholder="Book Title"
-               ng-model="book.title"
-               ng-maxlength="175"
-               required/>
+                            <!-- Below is an example of showing ng-messages inline -->
+                            <div ng-messages="roomForm.roomNumber.$error" class="help-block" role="alert"
+                                 ng-if="roomForm.$submitted || roomForm.roomNumber.$touched" ng-messages-multiple>
+                                <span ng-message="required">Required field!</span>
+                                <span ng-message="integer">The value is not a valid integer!</span>
+                                <span ng-message="minlength">Entered value is too short.</span>
+                                <span ng-message="maxlength">Entered value is too long.</span>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Below is an example of loading ng-messages from external file - messages.html -->
-        <div ng-messages="roomForm.title.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.title.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error': roomForm.roomPrice.$touched && roomForm.roomPrice.$invalid || roomForm.$submitted }">
+                        <label for="roomPrice" class="col-sm-3 control-label">Room Price</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="roomPrice" id="roomPrice"
+                                   placeholder="Room Price"
+                                   ng-model="room.roomPrice"
+                                   ng-maxlength="6"
+                                   price
+                                   required/>
 
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.dateofentry.$touched && roomForm.dateofentry.$invalid || roomForm.$submitted }">
-    <label for="dateofentry" class="col-sm-2 control-label">Date of entry</label>
-    <div class="col-sm-10">
-        <input type="date" class="form-control" name="dateofentry"
-               id="dateofentry"
-               placeholder="yyyy-MM-dd"
-               ng-model="book.dateofentry"
-               maxlength="10"
-               required/>
+                            <div ng-messages="roomForm.roomPrice.$error" class="help-block" role="alert"
+                                 ng-if="roomForm.$submitted || roomForm.roomPrice.$touched" ng-messages-multiple>
+                                <div ng-messages-include="partials/messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div ng-messages="roomForm.dateofentry.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.dateofentry.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error': roomForm.roomType.$touched && roomForm.roomType.$invalid || roomForm.$submitted }">
+                        <label for="roomType" class="col-sm-3 control-label">Room Type</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="roomType" id="roomType"
+                                   ng-model="room.roomType"
+                                   placeholder="Room Type"
+                                   ng-maxlength="45"
+                                   required/>
 
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.authors.$touched && roomForm.authors.$invalid || roomForm.$submitted }">
-    <label for="authors" class="col-sm-2 control-label">Authors</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="authors" id="authors"
-               ng-model="book.authors"
-               placeholder="Authors"
-               ng-maxlength="225"
-               required/>
+                            <div ng-messages="roomForm.roomType.$error" class="help-block" role="alert"
+                                 ng-if="roomForm.$submitted || roomForm.roomType.$touched" ng-messages-multiple>
+                                <div ng-messages-include="partials/messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div ng-messages="roomForm.authors.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.authors.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
+                    <div class="form-group"
+                         ng-class="{ 'has-error': roomForm.image.$touched && roomForm.image.$invalid || roomForm.$submitted }">
+                        <label for="image" class="col-sm-3 control-label">Image</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="image" id="image"
+                                   ng-model="room.image"
+                                   placeholder="Image"
+                                   ng-maxlength="225"
+                                   required/>
 
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.publisher.$touched && roomForm.publisher.$invalid || roomForm.$submitted }">
-    <label for="publisher" class="col-sm-2 control-label">Publisher</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="publisher" id="publisher"
-               placeholder="Publisher"
-               ng-model="book.publisher"
-               ng-maxlength="75"
-               required/>
+                            <div ng-messages="roomForm.image.$error" class="help-block" role="alert"
+                                 ng-if="roomForm.$submitted || roomForm.image.$touched" ng-messages-multiple>
+                                <div ng-messages-include="partials/messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div ng-messages="roomForm.publisher.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.publisher.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.dateofpublication.$touched && roomForm.dateofpublication.$invalid || roomForm.$submitted }">
-    <label for="dateofpublication" class="col-sm-2 control-label">Date of Publication</label>
-    <div class="col-sm-10">
-        <input type="date" class="form-control" name="dateofpublication"
-               id="dateofpublication"
-               placeholder="yyyy-MM-dd"
-               ng-model="book.dateofpublication"
-               maxlength="10"
-               required/>
-
-        <div ng-messages="roomForm.dateofpublication.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.dateofpublication.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.pages.$touched && roomForm.pages.$invalid || roomForm.$submitted }">
-    <label for="pages" class="col-sm-2 control-label">Pages</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="pages" id="pages"
-               placeholder="Amount of Pages"
-               ng-model="book.pages"
-               ng-maxlength="11"
-               required
-               integer/>
-
-        <div ng-messages="roomForm.pages.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.pages.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.genre.$touched && roomForm.genre.$invalid || roomForm.$submitted }">
-    <label for="genre" class="col-sm-2 control-label">Genre</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="genre" id="genre"
-               placeholder="Genre"
-               ng-model="book.genre"
-               ng-maxlength="75"
-               required/>
-
-        <div ng-messages="roomForm.genre.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.genre.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.image.$touched && roomForm.image.$invalid || roomForm.$submitted }">
-    <label for="image" class="col-sm-2 control-label">Image URL</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="image" id="image"
-               placeholder="Image URL"
-               ng-model="book.image"
-               ng-maxlength="225"
-               required/>
-
-        <div ng-messages="roomForm.image.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.image.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.cost.$touched && roomForm.cost.$invalid || roomForm.$submitted }">
-    <label for="cost" class="col-sm-2 control-label">Wholesale Price</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="cost" id="cost"
-               placeholder="Wholesale Price"
-               ng-model="book.cost"
-               ng-maxlength="6"
-               required
-               price/>
-
-        <div ng-messages="roomForm.cost.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.cost.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.list.$touched && roomForm.list.$invalid || roomForm.$submitted }">
-    <label for="list" class="col-sm-2 control-label">Retail Price</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" name="list" id="list"
-               placeholder="Retail Price"
-               ng-model="book.list"
-               ng-maxlength="6"
-               price
-               required/>
-
-        <div ng-messages="roomForm.list.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.list.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.removalstatus.$touched && roomForm.removalstatus.$invalid || roomForm.$submitted }">
-    <label for="removalstatus" class="col-sm-2 control-label">Removal Status</label>
-    <div class="col-sm-10">
-        <label class="radio-inline" data-ng-repeat="choice in removalStatus.choices">
-            <input type="radio" name="removalstatus" id="removalstatus"
-                   ng-value="{{choice.selected}}"
-                   ng-model="book.removalstatus"
-                   required/>
-            {{choice.text}}
-        </label>
-
-        <div ng-messages="roomForm.removalstatus.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.removalstatus.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
-        </div>
-    </div>
-</div>
-
-<div class="form-group"
-     ng-class="{ 'has-error': roomForm.description.$touched && roomForm.description.$invalid || roomForm.$submitted }">
-    <label for="description" class="col-sm-2 control-label">Description</label>
-    <div class="col-sm-10">
+                    <div class="form-group"
+                         ng-class="{ 'has-error': roomForm.description.$touched && roomForm.description.$invalid || roomForm.$submitted }">
+                        <label for="description" class="col-sm-3 control-label">Description</label>
+                        <div class="col-sm-8">
         <textarea rows="10" class="form-control" name="description" id="description"
-                  placeholder="Book description"
-                  ng-model="book.description"
+                  placeholder="Room description"
+                  ng-model="room.description"
                   required></textarea>
 
-        <div ng-messages="roomForm.description.$error" class="help-block" role="alert"
-             ng-if="roomForm.$submitted || roomForm.description.$touched" ng-messages-multiple>
-            <div ng-messages-include="partials/messages.html"></div>
+                            <div ng-messages="roomForm.description.$error" class="help-block" role="alert"
+                                 ng-if="roomForm.$submitted || roomForm.description.$touched" ng-messages-multiple>
+                                <div ng-messages-include="partials/messages.html"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" class="btn btn-primary dpanelbutton"
+                                   ng-disabled="roomForm.$invalid"
+                                   value="Save"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <input type="submit" class="btn btn-primary"
-               ng-disabled="roomForm.$invalid"
-               value="Save"/>
-    </div>
-</div>
+
+
+
+
+
+

@@ -27,12 +27,45 @@ angular.module('HotelAdmin.controllers', [])
 
     })
     .controller('RoomListController', function ($scope, $state, popupService, $window, Room, AuthService,
-                                                AUTH_EVENTS, $mdDialog, pageAuthService) {
+                                                AUTH_EVENTS, $mdDialog, pageAuthService, sharedProperties) {
 
         pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
         $scope.rooms = Room.query(); // Fetches all rooms with GET
-        //console.log($scope.books);
+        console.log($scope.rooms); // print rooms array
+
+        // Search functionality
+        $scope.roomSearch = new Room();
+
+        $scope.getAvailableRooms = function () { // Gets all available rooms for checkin/checkout/price
+            $scope.rooms = $scope.roomSearch.$getAvailableRooms(function (rooms) {
+
+                console.log(rooms.roomList);
+                // adding roomList array to the shared global properties
+                sharedProperties.setProperty(rooms.roomList);
+                // switching to the roomSearch page
+                $state.go('roomSearch');
+            });
+        }
+
+    })
+    .controller('RoomSearchController', function ($scope, $state, popupService, $window, Room, AuthService,
+                                                AUTH_EVENTS, $mdDialog, pageAuthService, sharedProperties) {
+
+        pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
+
+        $scope.rooms = sharedProperties.getProperty();
+        console.log($scope.rooms);
+
+        // Search functionality
+        $scope.roomSearch = new Room();
+
+        $scope.getAvailableRooms = function () { // Gets all available rooms for checkin/checkout/price
+            $scope.rooms = $scope.roomSearch.$getAvailableRooms(function (rooms) {
+                sharedProperties.setProperty(rooms.roomList);
+                $state.go($state.current, {}, {reload: true});
+            });
+        }
 
     })
     .controller('RoomViewController', function ($scope, $state, $stateParams, Room, AuthService,

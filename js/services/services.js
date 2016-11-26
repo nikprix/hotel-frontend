@@ -33,6 +33,18 @@ angular.module('HotelAdmin.services', ['HotelAdmin.config'])
                         'Content-Type': 'application/json; charset=utf-8',
                         'Authorization': 'Bearer ' + token
                     }
+                },
+                getAvailableRooms: {
+                    method: 'POST',
+                    params: {param: 'availablerooms'},
+                    //transformResponse: function (data) {
+                    //    return angular.fromJson(data).roomList;
+                    //},
+                    //isArray: true,
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + token
+                    }
                 }
             });
     })
@@ -40,6 +52,17 @@ angular.module('HotelAdmin.services', ['HotelAdmin.config'])
         this.showPopup = function (message) {
             return $window.confirm(message);
         }
+    }).service('sharedProperties', function () {
+        var bookSearch;
+
+        return {
+            getProperty:function () {
+                return bookSearch;
+            },
+            setProperty:function (value) {
+                bookSearch = value;
+            }
+        };
     })
     // helper https://devdactic.com/user-auth-angularjs-ionic/
     .service('AuthService', function ($q, $http, $rootScope, AUTH_EVENTS, $timeout, $state) {

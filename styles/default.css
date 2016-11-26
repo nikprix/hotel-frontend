@@ -137,6 +137,7 @@ h6 {
   color: #000;
   background-color: #fff;
   border: 2px solid #000;
+  border-radius: 0px !important;
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
@@ -152,6 +153,7 @@ h6 {
   transition-duration: 0.2s;
   color: #fff;
   background-color: #000;
+  border: 2px solid #000 !important;
   outline: none;
 }
 .dpanelcontainer {

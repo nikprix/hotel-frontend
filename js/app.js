@@ -55,6 +55,10 @@ hotelAdmin.config(function ($stateProvider, $httpProvider, $urlRouterProvider, $
         url: '/newBooking',
         templateUrl: 'partials/newbooking.html',
         controller: 'NewBookingController'
+    }).state('roomSearch', {
+        url: '/roomSearch',
+        templateUrl: 'partials/search-rooms.html',
+        controller: 'RoomSearchController'
     });
 }).run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
 
