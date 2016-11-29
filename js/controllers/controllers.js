@@ -1,29 +1,122 @@
 angular.module('HotelAdmin.controllers', [])
-    .controller('AllReservationsController', function ($scope, $state, popupService, $window, Room, AuthService,
-                                                         AUTH_EVENTS, $mdDialog, pageAuthService) {
+    .controller('AllReservationsController', function ($scope, $state, popupService, $window, Room, AuthService, Reservation,
+                                                         AUTH_EVENTS, $mdDialog, pageAuthService, sharedPropertiesReservation) {
 
         pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
-        $scope.rooms = Room.query(); // Fetches all books with GET
-        //console.log($scope.books);
+        $scope.reservations = Reservation.query(); // Fetches all Reservations with GET
+        console.log($scope.reservations);
 
+
+        // Search functionality
+        $scope.reservationSearch = new Reservation();
+
+        $scope.getAvailableReservations = function () { // Gets all available reservation for checkin
+            $scope.reservations = $scope.reservationSearch.$getSearchReservations(function (reservations) {
+
+                console.log(reservations.todayReservationList);
+                // adding todayReservationList array to the shared global properties
+                sharedPropertiesReservation.setProperty(reservations.todayReservationList);
+                // switching to the roomSearch page
+                $state.go('reservationSearch');
+            });
+        }
     })
-    .controller('NewBookingController', function ($scope, $state, popupService, $window, Room, AuthService,
-                                                         AUTH_EVENTS, $mdDialog, pageAuthService) {
+    .controller('ReservationSearchController', function ($scope, $state, popupService, $window, Room, AuthService, Reservation,
+                                                    AUTH_EVENTS, $mdDialog, pageAuthService, sharedPropertiesReservation) {
 
         pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
-        $scope.rooms = Room.query(); // Fetches all books with GET
-        //console.log($scope.books);
+        $scope.reservations = sharedPropertiesReservation.getProperty();
+
+        // Search functionality
+        $scope.reservationSearch = new Reservation();
+
+        $scope.getAvailableReservations = function () { // Gets all available reservation for checkin
+            $scope.reservations = $scope.reservationSearch.$getSearchReservations(function (reservations) {
+                sharedPropertiesReservation.setProperty(reservations.todayReservationList);
+                $state.go($state.current, {}, {reload: true});
+            });
+        }
 
     })
-    .controller('TodayReservationsController', function ($scope, $state, popupService, $window, Room, AuthService,
+    .controller('TodayReservationsController', function ($scope, $state, popupService, $window, Reservation, AuthService,
                                                 AUTH_EVENTS, $mdDialog, pageAuthService) {
 
         pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
-        $scope.rooms = Room.query(); // Fetches all books with GET
-        //console.log($scope.books);
+        // Getting current Date and in UTC
+        var now = new Date();
+        var now_utc = new Date(now.getUTCFullYear(), now.getUTCMonth(),
+            now.getUTCDate(),  now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+
+        var currentDateForReservations = {
+            currentDate: now
+        };
+
+        $scope.todayReservations = Reservation.getTodayReservations(currentDateForReservations); // Fetches all today Reservations with POST
+        console.log($scope.todayReservations);
+
+    })
+    .controller('ReservationViewController', function ($scope, $state, $stateParams, Reservation, Room, Customer, Payment,
+                                                       AuthService, AUTH_EVENTS, $mdDialog, pageAuthService, $q, $rootScope) {
+
+        pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
+
+        // Using $q service and its .then function to run 2 calls synchronously
+        // at first - need to get Reservation object
+        // and then - extract 'roomNumberId' from reservation to call
+        // for room details
+
+        $q.all([
+            $scope.reservation = Reservation.get({ // Gets single reservation with GET call
+                param: $stateParams.reservationId
+            })
+        ]).then(function(data) {
+
+            console.log(data[0]);
+            console.log(typeof(data[0]));
+
+            data[0].$promise.then(function(data){
+
+                $scope.room = Room.get({ // Gets single room with GET call using roomNumberId retrieved from data
+                    param: data.roomNumberId
+                });
+
+                $scope.customer = Customer.get({ // Gets single customer with GET call  using customerId retrieved from data
+                    param: data.customerId
+                });
+
+                $scope.payment = Payment.get({ // Gets payment with GET call  using customerId retrieved from
+                    // data
+                    param: data.reservationId
+                });
+
+            });
+
+        });
+
+        $rootScope.$on('$stateChangeSuccess', function(event, to, toParams, from, fromParams) {
+            //save the previous state in a rootScope variable so that it's accessible from everywhere
+            $rootScope.previousState = from;
+        });
+
+
+        // Handling DELETE button's call here, since DELETE should be available through $scope
+        $scope.deleteReservation = function(){
+            console.log('Deleting reservation!');
+
+            Reservation.deleteReservation({
+              param: $stateParams.reservationId
+            });
+
+            if(typeof $rootScope.previousState === "undefined" || $rootScope.previousState.name == 'reservationSearch'){
+                $state.go('allReservations');
+            } else {
+                $state.go($rootScope.previousState.name);
+            }
+
+        }
 
     })
     .controller('RoomListController', function ($scope, $state, popupService, $window, Room, AuthService,
@@ -83,15 +176,15 @@ angular.module('HotelAdmin.controllers', [])
 
         pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
-        $scope.removalStatus = {
-            choices: [{
-                text: "False",
-                selected: "false"
-            }, {
-                text: "True",
-                selected: "true"
-            }]
-        };
+        //$scope.removalStatus = {
+        //    choices: [{
+        //        text: "False",
+        //        selected: "false"
+        //    }, {
+        //        text: "True",
+        //        selected: "true"
+        //    }]
+        //};
 
         $scope.room = new Room(); // Creates new room object where properties will be set via ng-model in UI
 
@@ -136,20 +229,28 @@ angular.module('HotelAdmin.controllers', [])
         $scope.loadRoom(); // Load a room for editing in the form
 
 
-        // Used for disabling ISBN on edit
+        // Used for disabling roomID on edit
         $scope.isEdit = function (roomsLoaded) {
             return (roomsLoaded) ? true : false;
         };
 
-        $scope.removalStatus = {
-            choices: [{
-                text: "False",
-                selected: "false"
-            }, {
-                text: "True",
-                selected: "true"
-            }]
-        };
+        //$scope.removalStatus = {
+        //    choices: [{
+        //        text: "False",
+        //        selected: "false"
+        //    }, {
+        //        text: "True",
+        //        selected: "true"
+        //    }]
+        //};
+
+    })
+    .controller('NewBookingController', function ($scope, $state, popupService, $window, Room, AuthService,
+                                                  AUTH_EVENTS, $mdDialog, pageAuthService) {
+
+        pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
+
+        $scope.rooms = Room.query(); // Fetches all rooms with GET
 
     })
     .controller('HotelLoginController', AuthController);

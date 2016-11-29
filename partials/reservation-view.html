@@ -1,0 +1,76 @@
+<div class="dpanelgridcenter pure-g">
+    <div class="pure-u-1 thumbnail">
+        <div class="dpanel">
+            <div class="dpanelheader">Reservation ID: {{ reservation.reservationId }}</div>
+            <div class="dpanelcontent">
+
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>Checkin</td>
+                        <td>{{ reservation.checkinDate }}</td>
+                    </tr>
+                    <tr>
+                        <td>Checkout</td>
+                        <td>{{ reservation.checkoutDate }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Room Number</td>
+                        <td>{{ room.roomNumber | uppercase }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Room picture</td>
+                        <td><img ng-src="{{ room.image }}"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Price</td>
+                        <td>{{ room.roomPrice | currency}}</td>
+                    </tr>
+                    <tr>
+                        <td>Room type</td>
+                        <td>{{ room.roomType }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>{{ room.description }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Customer</td>
+                        <td>{{ customer.firstName }} {{ customer.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>{{ customer.address }}</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>{{ customer.city }}</td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>{{ customer.state }}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>{{ customer.phone }}</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>{{ payment.paymentAmount | currency}}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="dpanelaction">
+                <a ng-controller="ReservationViewController" ng-click="deleteReservation()" class="dpanelbutton">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>

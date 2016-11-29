@@ -6,12 +6,18 @@ var config_data = {
         'APP_VERSION': '0.1'
     },
     'SERVICE_CONFIG': {
-        'AUTH_URL': 'http://ec2-54-174-192-247.compute-1.amazonaws.com:8080/BookStoreWebService/webresources/authentication',
-        'RESOURCE_URL': 'http://ec2-54-174-192-247.compute-1.amazonaws.com:8080/BookStoreWebService/webresources/books/:param',
+        'AUTH_URL': 'http://ec2-54-174-192-247.compute-1.amazonaws.com:8080/hotel-backend/webresources/authentication',
+        'RESOURCE_URL': 'http://ec2-54-174-192-247.compute-1.amazonaws.com:8080/hotel-backend/webresources/rooms/:param',
+        'RESERVATION_RESOURCE_URL': 'http://ec2-54-174-192-247.compute-1.amazonaws.com:8080/hotel-backend/webresources/reservations/:param',
+        'CUSTOMER_RESOURCE_URL': 'http://ec2-54-174-192-247.compute-1.amazonaws.com:8080/hotel-backend/webresources/customers/:param',
+        'PAYMENT_RESOURCE_URL': 'http://ec2-54-174-192-247.compute-1.amazonaws.com:8080/hotel-backend/webresources/payments/:param'
     },
     'SERVICE_CONFIG_DEV': {
         'AUTH_URL': 'http://localhost:8080/hotel-backend/webresources/authentication',
         'RESOURCE_URL': 'http://localhost:8080/hotel-backend/webresources/rooms/:param',
+        'RESERVATION_RESOURCE_URL': 'http://localhost:8080/hotel-backend/webresources/reservations/:param',
+        'CUSTOMER_RESOURCE_URL': 'http://localhost:8080/hotel-backend/webresources/customers/:param',
+        'PAYMENT_RESOURCE_URL': 'http://localhost:8080/hotel-backend/webresources/payments/:param'
     }
 };
 

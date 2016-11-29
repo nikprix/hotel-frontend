@@ -23,11 +23,16 @@ hotelAdmin.config(function ($stateProvider, $httpProvider, $urlRouterProvider, $
     // are requested other than users
     $urlRouterProvider.otherwise('/login');
 
-    $stateProvider.state('rooms', {
-        url: '/rooms',
-        templateUrl: 'partials/rooms.html',
-        controller: 'RoomListController'
-    }).state('viewRoom', {
+    $stateProvider
+        .state('login', {
+            url: '/login',
+            templateUrl: 'partials/hotel-login.html',
+            controller: 'HotelLoginController as auth'
+        }).state('rooms', {
+            url: '/rooms',
+            templateUrl: 'partials/rooms.html',
+            controller: 'RoomListController'
+        }).state('viewRoom', {
         url: '/rooms/:roomNumber/view',
         templateUrl: 'partials/room-view.html',
         controller: 'RoomViewController'
@@ -39,10 +44,14 @@ hotelAdmin.config(function ($stateProvider, $httpProvider, $urlRouterProvider, $
         url: '/rooms/:roomNumber/edit',
         templateUrl: 'partials/room-edit.html',
         controller: 'RoomEditController'
-    }).state('login', {
-        url: '/login',
-        templateUrl: 'partials/hotel-login.html',
-        controller: 'HotelLoginController as auth'
+    }).state('roomSearch', {
+        url: '/roomSearch',
+        templateUrl: 'partials/search-rooms.html',
+        controller: 'RoomSearchController'
+    }).state('viewReservation', {
+        url: '/reservations/:reservationId/view',
+        templateUrl: 'partials/reservation-view.html',
+        controller: 'ReservationViewController'
     }).state('todayReservations', {
         url: '/todayReservations',
         templateUrl: 'partials/today-reservations.html',
@@ -51,14 +60,14 @@ hotelAdmin.config(function ($stateProvider, $httpProvider, $urlRouterProvider, $
         url: '/allReservations',
         templateUrl: 'partials/reservations.html',
         controller: 'AllReservationsController'
+    }).state('reservationSearch', {
+        url: '/reservationSearch',
+        templateUrl: 'partials/search-reservations.html',
+        controller: 'ReservationSearchController'
     }).state('newBooking', {
         url: '/newBooking',
         templateUrl: 'partials/newbooking.html',
         controller: 'NewBookingController'
-    }).state('roomSearch', {
-        url: '/roomSearch',
-        templateUrl: 'partials/search-rooms.html',
-        controller: 'RoomSearchController'
     });
 }).run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
 

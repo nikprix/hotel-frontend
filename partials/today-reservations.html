@@ -1,73 +1,21 @@
 <div class="dcenter">
     <span class="dtitle">Today's reservations</span>
     <a ng-controller="HotelLoginController" ng-click="logout()" class="dtitle dtitlebutton">Logout</a>
+    <button  class="dtitle dtitlebutton" onclick="printPage()">Print</button>
 </div>
 
 <div class="dpanelgridcenter pure-g">
 
-    <div class="dpanelcontainer pure-u-1 pure-u-md-1-3">
+    <div ng-repeat="todayReservation in todayReservations.todayReservationList" class="dpanelcontainer pure-u-1 pure-u-md-1-3">
         <div class="dpanel">
-            <div class="dpanelheader">Mr. Malcolm Reynolds</div>
+            <div class="dpanelheader">{{ todayReservation.firstName }} {{ todayReservation.lastName }}</div>
             <div class="dpanelcontent">
-                <p>Room: 409</p>
-                <p>Check-in: 9:00 AM</p>
+                <p>Room: {{ todayReservation.roomNumber }}</p>
+                <p>Check-in: {{ todayReservation.checkinDate }}</p>
             </div>
             <div class="dpanelaction">
-                <a href="#" class="dpanelbutton">View details</a>
+                <a ui-sref="viewReservation({reservationId:todayReservation.reservationId})" class="dpanelbutton">View details</a>
             </div>
         </div>
     </div>
-
-    <div class="dpanelcontainer pure-u-1 pure-u-md-1-3">
-        <div class="dpanel">
-            <div class="dpanelheader">Ms. Zoë Washburne</div>
-            <div class="dpanelcontent">
-                <p>Room: 411</p>
-                <p>Check-in: 9:00 AM</p>
-            </div>
-            <div class="dpanelaction">
-                <a href="#" class="dpanelbutton">View details</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="dpanelcontainer pure-u-1 pure-u-md-1-3">
-        <div class="dpanel">
-            <div class="dpanelheader">Mr. Simon Tam</div>
-            <div class="dpanelcontent">
-                <p>Room: 408</p>
-                <p>Check-in: 10:00 AM</p>
-            </div>
-            <div class="dpanelaction">
-                <a href="#" class="dpanelbutton">View details</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="dpanelcontainer pure-u-1 pure-u-md-1-3">
-        <div class="dpanel">
-            <div class="dpanelheader">Mr. Jayne Cobb</div>
-            <div class="dpanelcontent">
-                <p>Room: 405</p>
-                <p>Check-in: 11:00 AM</p>
-            </div>
-            <div class="dpanelaction">
-                <a href="#" class="dpanelbutton">View details</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="dpanelcontainer pure-u-1 pure-u-md-1-3">
-        <div class="dpanel">
-            <div class="dpanelheader">Ms. Kaylee Frye</div>
-            <div class="dpanelcontent">
-                <p>Room: 400</p>
-                <p>Check-in: 12:00 AM</p>
-            </div>
-            <div class="dpanelaction">
-                <a href="#" class="dpanelbutton">View details</a>
-            </div>
-        </div>
-    </div>
-
 </div>

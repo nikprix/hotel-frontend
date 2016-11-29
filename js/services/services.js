@@ -37,10 +37,102 @@ angular.module('HotelAdmin.services', ['HotelAdmin.config'])
                 getAvailableRooms: {
                     method: 'POST',
                     params: {param: 'availablerooms'},
-                    //transformResponse: function (data) {
-                    //    return angular.fromJson(data).roomList;
-                    //},
-                    //isArray: true,
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + token
+                    }
+                }
+            });
+    })
+    .factory('Reservation', function ($resource, SERVICE_CONFIG_DEV, AUTH_EVENTS) {
+
+        var token = window.localStorage.getItem(AUTH_EVENTS.LOCAL_TOKEN_KEY);
+
+        return $resource(SERVICE_CONFIG_DEV.RESERVATION_RESOURCE_URL, {},
+            {
+                query: {
+                    method: 'GET',
+                    headers: {'Authorization': 'Bearer ' + token}
+                },
+                get: {
+                    method: 'GET',
+                    headers: {'Authorization': 'Bearer ' + token}
+                },
+                deleteReservation: {
+                    method: 'DELETE', // this method issues a DELETE request,
+                    params: {param: 'id'},
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + token
+                    }
+                },
+                //save: {
+                //    method: 'POST',
+                //    params: {param: 'create'},
+                //    headers: {
+                //        'Content-Type': 'application/json; charset=utf-8',
+                //        'Authorization': 'Bearer ' + token
+                //    }
+                //},
+                getTodayReservations: {
+                    method: 'POST',
+                    params: {param: 'todayReservations'},
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + token
+                    }
+                },
+                getSearchReservations: {
+                    method: 'POST',
+                    params: {param: 'availableReservations'},
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + token
+                    }
+                }
+            });
+    })
+    .factory('Customer', function ($resource, SERVICE_CONFIG_DEV, AUTH_EVENTS) {
+
+        var token = window.localStorage.getItem(AUTH_EVENTS.LOCAL_TOKEN_KEY);
+
+        return $resource(SERVICE_CONFIG_DEV.CUSTOMER_RESOURCE_URL, {},
+            {
+                get: {
+                    method: 'GET',
+                    headers: {'Authorization': 'Bearer ' + token}
+                },
+                update: {
+                    method: 'PUT', // this method issues a PUT request,
+                    params: {param: 'update'},
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + token
+                    }
+                },
+                save: {
+                    method: 'POST',
+                    params: {param: 'create'},
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + token
+                    }
+                }
+            });
+    })
+    .factory('Payment', function ($resource, SERVICE_CONFIG_DEV, AUTH_EVENTS) {
+
+        var token = window.localStorage.getItem(AUTH_EVENTS.LOCAL_TOKEN_KEY);
+
+        return $resource(SERVICE_CONFIG_DEV.PAYMENT_RESOURCE_URL, {},
+            {
+                get: {
+                    method: 'GET',
+                    headers: {'Authorization': 'Bearer ' + token}
+                },
+                save: {
+                    method: 'POST',
+                    params: {param: 'create'},
                     headers: {
                         'Content-Type': 'application/json; charset=utf-8',
                         'Authorization': 'Bearer ' + token
@@ -52,7 +144,8 @@ angular.module('HotelAdmin.services', ['HotelAdmin.config'])
         this.showPopup = function (message) {
             return $window.confirm(message);
         }
-    }).service('sharedProperties', function () {
+    })
+    .service('sharedProperties', function () {
         var bookSearch;
 
         return {
@@ -61,6 +154,18 @@ angular.module('HotelAdmin.services', ['HotelAdmin.config'])
             },
             setProperty:function (value) {
                 bookSearch = value;
+            }
+        };
+    })
+    .service('sharedPropertiesReservation', function () {
+        var reservationSearch;
+
+        return {
+            getProperty:function () {
+                return reservationSearch;
+            },
+            setProperty:function (value) {
+                reservationSearch = value;
             }
         };
     })
@@ -165,7 +270,6 @@ angular.module('HotelAdmin.services', ['HotelAdmin.config'])
             }
         };
     })
-
     .config(function ($httpProvider) {
         $httpProvider.interceptors.push('AuthInterceptor');
     });

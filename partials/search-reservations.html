@@ -5,7 +5,7 @@
             <div class="dpanelcontent" style="padding-bottom: 0px;">
                 <div>
 
-                    <form class="form-horizontal" name="reservationSearchForm" role="form" 
+                    <form class="form-horizontal" name="reservationSearchForm" role="form"
                           ng-submit="getAvailableReservations()"
                           novalidate>
 
@@ -46,23 +46,25 @@
     </div>
 </div>
 
-    <div class="dcenter">
-        <span class="dtitle">Reservations</span>
+
+<div class="dcenter">
+    <span class="dtitle">Reservations</span>
+</div>
+
+<div class="dpanelgridcenter pure-g">
+
+    <div ng-repeat="reservation in reservations"
+         class="dpanelcontainer pure-u-1 pure-u-md-1-3">
+        <div class="dpanel">
+            <div class="dpanelheader">{{ reservation.firstName }} {{ reservation.lastName }}</div>
+            <div class="dpanelcontent">
+                <p>Room: {{ reservation.roomNumber }}</p>
+                <p>Check-in: {{ reservation.checkinDate }}</p>
+            </div>
+            <div class="dpanelaction">
+                <a ui-sref="viewReservation({reservationId:reservation.reservationId})" class="dpanelbutton">View details</a>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="dpanelgridcenter pure-g">
-
-     <div ng-repeat="reservation in reservations.allReservationList"
-          class="dpanelcontainer pure-u-1 pure-u-md-1-3">
-         <div class="dpanel">
-             <div class="dpanelheader">{{ reservation.firstName }} {{ reservation.lastName }}</div>
-             <div class="dpanelcontent">
-                 <p>Room: {{ reservation.roomNumber }}</p>
-                 <p>Check-in: {{ reservation.checkinDate }}</p>
-             </div>
-             <div class="dpanelaction">
-                 <a ui-sref="viewReservation({reservationId:reservation.reservationId})" class="dpanelbutton">View details</a>
-             </div>
-         </div>
-     </div>
- </div>
