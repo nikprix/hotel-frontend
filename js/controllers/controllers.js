@@ -1,65 +1,72 @@
 angular.module('HotelAdmin.controllers', [])
-    .controller('AllReservationsController', function ($scope, $state, popupService, $window, Room, AuthService, Reservation,
-                                                         AUTH_EVENTS, $mdDialog, pageAuthService, sharedPropertiesReservation) {
+    .controller('AllReservationsController',
+        function ($scope, $state, popupService, $window, Room, AuthService, Reservation,
+                  AUTH_EVENTS, $mdDialog, pageAuthService, sharedPropertiesReservation) {
 
-        pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
+            pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
-        $scope.reservations = Reservation.query(); // Fetches all Reservations with GET
-        console.log($scope.reservations);
+            $scope.reservations = Reservation.query(); // Fetches all Reservations with GET
+            console.log($scope.reservations);
 
 
-        // Search functionality
-        $scope.reservationSearch = new Reservation();
+            // Search functionality
+            $scope.reservationSearch = new Reservation();
 
-        $scope.getAvailableReservations = function () { // Gets all available reservation for checkin
-            $scope.reservations = $scope.reservationSearch.$getSearchReservations(function (reservations) {
+            $scope.getAvailableReservations = function () { // Gets all available reservation for checkin
+                $scope.reservations = $scope.reservationSearch.$getSearchReservations(function (reservations) {
 
-                console.log(reservations.todayReservationList);
-                // adding todayReservationList array to the shared global properties
-                sharedPropertiesReservation.setProperty(reservations.todayReservationList);
-                // switching to the roomSearch page
-                $state.go('reservationSearch');
-            });
-        }
-    })
-    .controller('ReservationSearchController', function ($scope, $state, popupService, $window, Room, AuthService, Reservation,
-                                                    AUTH_EVENTS, $mdDialog, pageAuthService, sharedPropertiesReservation) {
+                    console.log(reservations.todayReservationList);
+                    // adding todayReservationList array to the shared global properties
+                    sharedPropertiesReservation.setProperty(reservations.todayReservationList);
+                    // switching to the roomSearch page
+                    $state.go('reservationSearch');
+                });
+            }
+        })
+    .controller('ReservationSearchController',
+        function ($scope, $state, popupService, $window, Room, AuthService, Reservation,
+                  AUTH_EVENTS, $mdDialog, pageAuthService, sharedPropertiesReservation) {
 
-        pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
+            pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
-        $scope.reservations = sharedPropertiesReservation.getProperty();
+            $scope.reservations = sharedPropertiesReservation.getProperty();
 
-        // Search functionality
-        $scope.reservationSearch = new Reservation();
+            // Search functionality
+            $scope.reservationSearch = new Reservation();
 
-        $scope.getAvailableReservations = function () { // Gets all available reservation for checkin
-            $scope.reservations = $scope.reservationSearch.$getSearchReservations(function (reservations) {
-                sharedPropertiesReservation.setProperty(reservations.todayReservationList);
-                $state.go($state.current, {}, {reload: true});
-            });
-        }
+            $scope.getAvailableReservations = function () { // Gets all available reservation for checkin
+                $scope.reservations = $scope.reservationSearch.$getSearchReservations(function (reservations) {
+                    sharedPropertiesReservation.setProperty(reservations.todayReservationList);
+                    $state.go($state.current, {}, {reload: true});
+                });
+            }
 
-    })
-    .controller('TodayReservationsController', function ($scope, $state, popupService, $window, Reservation, AuthService,
-                                                AUTH_EVENTS, $mdDialog, pageAuthService) {
+        })
+    .controller('TodayReservationsController',
+        function ($scope, $state, popupService, $window, Reservation, AuthService,
+                  AUTH_EVENTS, $mdDialog, pageAuthService) {
 
-        pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
+            pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
-        // Getting current Date and in UTC
-        var now = new Date();
-        var now_utc = new Date(now.getUTCFullYear(), now.getUTCMonth(),
-            now.getUTCDate(),  now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+            // Getting current Date and in UTC
+            var now = new Date();
+            var now_utc = new Date(now.getUTCFullYear(), now.getUTCMonth(),
+                now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
 
-        var currentDateForReservations = {
-            currentDate: now
-        };
+            var currentDateForReservations = {
+                currentDate: now
+            };
 
-        $scope.todayReservations = Reservation.getTodayReservations(currentDateForReservations); // Fetches all today Reservations with POST
-        console.log($scope.todayReservations);
+            $scope.todayReservations = Reservation.getTodayReservations(currentDateForReservations); // Fetches all
+                                                                                                     // today
+                                                                                                     // Reservations
+                                                                                                     // with POST
+            console.log($scope.todayReservations);
 
-    })
-    .controller('ReservationViewController', function ($scope, $state, $stateParams, Reservation, Room, Customer, Payment,
-                                                       AuthService, AUTH_EVENTS, $mdDialog, pageAuthService, $q, $rootScope) {
+        })
+    .controller('ReservationViewController', function ($scope, $state, $stateParams, Reservation, Room, Customer,
+                                                       Payment, AuthService, AUTH_EVENTS, $mdDialog, pageAuthService,
+                                                       $q, $rootScope, $window) {
 
         pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
@@ -72,12 +79,12 @@ angular.module('HotelAdmin.controllers', [])
             $scope.reservation = Reservation.get({ // Gets single reservation with GET call
                 param: $stateParams.reservationId
             })
-        ]).then(function(data) {
+        ]).then(function (data) {
 
             console.log(data[0]);
             console.log(typeof(data[0]));
 
-            data[0].$promise.then(function(data){
+            data[0].$promise.then(function (data) {
 
                 $scope.room = Room.get({ // Gets single room with GET call using roomNumberId retrieved from data
                     param: data.roomNumberId
@@ -96,21 +103,28 @@ angular.module('HotelAdmin.controllers', [])
 
         });
 
-        $rootScope.$on('$stateChangeSuccess', function(event, to, toParams, from, fromParams) {
+        $rootScope.$on('$stateChangeSuccess', function (event, to, toParams, from, fromParams) {
             //save the previous state in a rootScope variable so that it's accessible from everywhere
             $rootScope.previousState = from;
         });
 
 
         // Handling DELETE button's call here, since DELETE should be available through $scope
-        $scope.deleteReservation = function(){
+        $scope.deleteReservation = function () {
             console.log('Deleting reservation!');
 
             Reservation.deleteReservation({
-              param: $stateParams.reservationId
+                param: $stateParams.reservationId
             });
 
-            if(typeof $rootScope.previousState === "undefined" || $rootScope.previousState.name == 'reservationSearch'){
+            //$q.all([
+            //    $window.history.back()
+            //]).then(function() {
+            //    $state.go($state.current, {}, {reload: true});
+            //});
+
+
+            if (typeof $rootScope.previousState === "undefined" || $rootScope.previousState.name == 'reservationSearch') {
                 $state.go('allReservations');
             } else {
                 $state.go($rootScope.previousState.name);
@@ -143,7 +157,7 @@ angular.module('HotelAdmin.controllers', [])
 
     })
     .controller('RoomSearchController', function ($scope, $state, popupService, $window, Room, AuthService,
-                                                AUTH_EVENTS, $mdDialog, pageAuthService, sharedProperties) {
+                                                  AUTH_EVENTS, $mdDialog, pageAuthService, sharedProperties) {
 
         pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
@@ -176,16 +190,6 @@ angular.module('HotelAdmin.controllers', [])
 
         pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
-        //$scope.removalStatus = {
-        //    choices: [{
-        //        text: "False",
-        //        selected: "false"
-        //    }, {
-        //        text: "True",
-        //        selected: "true"
-        //    }]
-        //};
-
         $scope.room = new Room(); // Creates new room object where properties will be set via ng-model in UI
 
         $scope.addRoom = function () { // Creates a new room. Issues a POST request to API
@@ -195,76 +199,127 @@ angular.module('HotelAdmin.controllers', [])
         }
 
     })
-    .controller('RoomEditController', function ($scope, $state, $stateParams, Room, AuthService,
-                                                AUTH_EVENTS, $mdDialog, pageAuthService) {
+    .controller('NewBookingController', function ($scope, $state, $stateParams, Room, AuthService, Reservation,
+                                                  Customer, Payment, AUTH_EVENTS, $mdDialog, pageAuthService, $q) {
 
         pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
 
-        $scope.updateRoom = function () { // Updates edited room with PUT request to API call
-            $scope.room.$update(function () {
-                $state.go('rooms'); // on success goes back to the 'books' view
+        $scope.cardtypes = {
+            choices: [{
+                text: "Visa",
+                selected: "true"
+            }, {
+                text: "MasterCard",
+                selected: "false"
+            }]
+        };
+
+        // Using $q service and its .then function to run 2 calls synchronously
+        // at first - need to get Reservation object
+        // and then - extract 'roomNumberId' from reservation to call
+        // for room details
+
+        // creating objects to map data from the form
+        $scope.customer = new Customer();
+        $scope.payment = new Payment();
+        $scope.reservation = new Reservation();
+
+        // need to initialize below fields because they are mandatory for sending via API call.
+        // call returns IDs of the created records.
+        $scope.customer.customerId = 0;
+        $scope.reservation.reservationId = 0;
+        $scope.payment.paymentId = 0;
+        // hardcoding employeeId for now. future enhancement - get it after login and store for
+        // future retrieval either in local storage or scope.
+        $scope.reservation.employeeId = 1;
+
+        $scope.addBooking = function () { // Creates a new booking. Issues a POST request to API
+
+            $scope.customer.$save(function (id) {
+                // overwriting customerId with created id (returned by API) needed for saving of reservation/payment
+                $scope.reservation.customerId = id.customerId;
+                $scope.payment.customerId = id.customerId;
+
+                // updating $scope.customer.customerId too:
+                $scope.customer.customerId = id.customerId;
+                console.log('created customer with ID: ' + id.customerId);
+
+
+                $scope.reservation.$createReservation(function(id){
+                    $scope.payment.reservationId = id.reservationId;
+                    // updating $scope.reservation.reservationId too:
+                    $scope.reservation.reservationId = id.reservationId;
+                    console.log('created reservation with ID: ' + id.reservationId);
+
+
+                    $scope.payment.$save(function (id) {
+                        // overwriting paymentId with created id (returned by API)
+                        $scope.payment.paymentId = id.paymentId;
+                        $scope.payment.customerId = $scope.customer.customerId;
+                        console.log('created payment with ID: ' + id.paymentId);
+
+                        $state.go('allReservations');
+                    });
+
+                });
+
             });
-        };
-
-        $scope.loadRoom = function () { // Sends a GET request to to get a room for update
-            $scope.room = Room.get({
-                    param: $stateParams.roomNumber
-                }
-                //,
-                //// init form UI function: converts received String dates to the Date object
-                //function () {
-                //    $scope.book.dateofentry = new Date($scope.book.dateofentry);
-                //    // fixing Angular's Datepicker 1 day offset issue
-                //    $scope.book.dateofentry.setMinutes(
-                //        $scope.book.dateofentry.getMinutes() + $scope.book.dateofentry.getTimezoneOffset());
-                //
-                //    $scope.book.dateofpublication = new Date($scope.book.dateofpublication);
-                //    // fixing Angular's Datepicker 1 day offset issue
-                //    $scope.book.dateofpublication.setMinutes(
-                //        $scope.book.dateofpublication.getMinutes() + $scope.book.dateofpublication.getTimezoneOffset());
-                //}
-            );
-        };
-
-        $scope.loadRoom(); // Load a room for editing in the form
 
 
-        // Used for disabling roomID on edit
-        $scope.isEdit = function (roomsLoaded) {
-            return (roomsLoaded) ? true : false;
-        };
 
-        //$scope.removalStatus = {
-        //    choices: [{
-        //        text: "False",
-        //        selected: "false"
-        //    }, {
-        //        text: "True",
-        //        selected: "true"
-        //    }]
-        //};
 
-    })
-    .controller('NewBookingController', function ($scope, $state, popupService, $window, Room, AuthService,
-                                                  AUTH_EVENTS, $mdDialog, pageAuthService) {
 
-        pageAuthService.checkPageAuth(AUTH_EVENTS, AuthService, $state, $mdDialog, $scope);
+            //$q.all([
+            //
+            //    $scope.customer.$save(function (id) {
+            //        // overwriting customerId with created id (returned by API)
+            //        $scope.customer.customerId = id;
+            //        console.log('created customer' + $scope.customer.customerId);
+            //    })
+            //
+            //]).then(function (data) {
+            //
+            //    //console.log(data[0]);
+            //
+            //    data[0].$promise.then(function () {
+            //
+            //        $q.all([
+            //
+            //            $scope.payment.$save(function (id) {
+            //                // overwriting paymentId with created id (returned by API)
+            //                $scope.payment.paymentId = id;
+            //                console.log('created payment' + $scope.payment.paymentId);
+            //            })
+            //
+            //        ]).then(function () {
+            //
+            //            $scope.reservation.$createReservation(function(){
+            //                $state.go('allReservations');
+            //            });
+            //
+            //        });
+            //
+            //    });
+            //
+            //});
 
-        $scope.rooms = Room.query(); // Fetches all rooms with GET
+
+        }
+
 
     })
     .controller('HotelLoginController', AuthController);
 
-    function AuthController($auth, $scope, $http, $state, $mdDialog, $rootScope, AuthService) {
+function AuthController($auth, $scope, $http, $state, $mdDialog, $rootScope, AuthService) {
 
-        // Handling logout button's call here, since logout should be available through $scope
-        $scope.logout = function(){
-            console.log('logging out!');
-            // calling service logout() function
-            AuthService.logout();
+    // Handling logout button's call here, since logout should be available through $scope
+    $scope.logout = function () {
+        console.log('logging out!');
+        // calling service logout() function
+        AuthService.logout();
 
-            $state.go('login', {});
-        }
+        $state.go('login', {});
+    }
 
     var vm = this;
 

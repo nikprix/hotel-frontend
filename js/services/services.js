@@ -66,14 +66,14 @@ angular.module('HotelAdmin.services', ['HotelAdmin.config'])
                         'Authorization': 'Bearer ' + token
                     }
                 },
-                //save: {
-                //    method: 'POST',
-                //    params: {param: 'create'},
-                //    headers: {
-                //        'Content-Type': 'application/json; charset=utf-8',
-                //        'Authorization': 'Bearer ' + token
-                //    }
-                //},
+                createReservation: {
+                    method: 'POST',
+                    params: {param: 'create'},
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8',
+                        'Authorization': 'Bearer ' + token
+                    }
+                },
                 getTodayReservations: {
                     method: 'POST',
                     params: {param: 'todayReservations'},

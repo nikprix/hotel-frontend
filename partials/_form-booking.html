@@ -1,0 +1,308 @@
+<form>
+    <div class="dpanelgridcenter pure-g">
+
+        <div class="dpanelcontainer pure-u-1 pure-u-lg-1-2 pure-u-md-2-3">
+            <div class="dpanel">
+                <div class="dpanelheader">Customer Info</div>
+                <div class="dpanelcontent">
+                    <div class="">
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.firstName.$touched && bookingForm.firstName.$invalid || bookingForm.$submitted }">
+                            <label for="firstName" class="col-sm-3 control-label">First name:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="firstName" id="firstName"
+                                       ng-model="customer.firstName"
+                                       placeholder="First Name"
+                                       ng-maxlength="25"
+                                       required/>
+
+                                <div ng-messages="bookingForm.firstName.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.firstName.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.lastName.$touched && bookingForm.lastName.$invalid || bookingForm.$submitted }">
+                            <label for="lastName" class="col-sm-3 control-label">Last name:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="lastName" id="lastName"
+                                       ng-model="customer.lastName"
+                                       placeholder="Last Name"
+                                       ng-maxlength="25"
+                                       required/>
+
+                                <div ng-messages="bookingForm.lastName.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.lastName.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.address.$touched && bookingForm.address.$invalid || bookingForm.$submitted }">
+                            <label for="address" class="col-sm-3 control-label">Address:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="address" id="address"
+                                       ng-model="customer.address"
+                                       placeholder="Address"
+                                       ng-maxlength="25"
+                                       required/>
+
+                                <div ng-messages="bookingForm.address.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.address.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.city.$touched && bookingForm.city.$invalid || bookingForm.$submitted }">
+                            <label for="city" class="col-sm-3 control-label">City:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="city" id="city"
+                                       ng-model="customer.city"
+                                       placeholder="City"
+                                       ng-maxlength="25"
+                                       required/>
+
+                                <div ng-messages="bookingForm.city.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.city.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.state.$touched && bookingForm.state.$invalid || bookingForm.$submitted }">
+                            <label for="state" class="col-sm-3 control-label">State:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="state" id="state"
+                                       ng-model="customer.state"
+                                       placeholder="State"
+                                       ng-maxlength="25"
+                                       required/>
+
+                                <div ng-messages="bookingForm.state.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.state.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.phone.$touched && bookingForm.phone.$invalid || bookingForm.$submitted }">
+                            <label for="phone" class="col-sm-3 control-label">Phone number:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="phone" id="phone"
+                                       ng-model="customer.phone"
+                                       placeholder="Phone"
+                                       ng-maxlength="25"
+                                       required/>
+
+                                <div ng-messages="bookingForm.phone.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.phone.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dpanelcontainer pure-u-1 pure-u-lg-1-2 pure-u-md-2-3">
+            <div class="dpanel">
+                <div class="dpanelheader">Reservation Info</div>
+                <div class="dpanelcontent">
+                    <div class="">
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.checkinDate.$touched && bookingForm.checkinDate.$invalid || bookingForm.$submitted }">
+                            <label for="checkinDate" class="col-sm-3 control-label">Checkin:</label>
+                            <div class="col-sm-8">
+                                <input type="datetime-local" class="form-control" name="checkinDate"
+                                       id="checkinDate"
+                                       placeholder="yyyy-MM-dd HH:mm:ss"
+                                       ng-model="reservation.checkinDate"
+                                       maxlength="17"
+                                       required/>
+
+                                <div ng-messages="bookingForm.checkinDate.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.checkinDate.$touched"
+                                     ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.checkoutDate.$touched && bookingForm.checkoutDate.$invalid || bookingForm.$submitted }">
+                            <label for="checkoutDate" class="col-sm-3 control-label">Checkout:</label>
+                            <div class="col-sm-8">
+                                <input type="datetime-local" class="form-control" name="checkoutDate"
+                                       id="checkoutDate"
+                                       placeholder="yyyy-MM-dd HH:mm:ss"
+                                       ng-model="reservation.checkoutDate"
+                                       maxlength="17"
+                                       required/>
+
+                                <div ng-messages="bookingForm.checkoutDate.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.checkoutDate.$touched"
+                                     ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.roomNumber.$touched && bookingForm.roomNumber.$invalid || bookingForm.$submitted }">
+                            <label for="roomNumber" class="col-sm-3 control-label">Room Number</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="roomNumber" id="roomNumber"
+                                       placeholder="Room Number"
+                                       ng-model="reservation.roomNumberId"
+                                       ng-minlength="1"
+                                       ng-maxlength="8"
+                                       integer
+                                       required/>
+
+                                <!-- Below is an example of showing ng-messages inline -->
+                                <div ng-messages="bookingForm.roomNumber.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.roomNumber.$touched" ng-messages-multiple>
+                                    <span ng-message="required">Required field!</span>
+                                    <span ng-message="integer">The value is not a valid integer!</span>
+                                    <span ng-message="minlength">Entered value is too short.</span>
+                                    <span ng-message="maxlength">Entered value is too long.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.cardType.$touched && bookingForm.cardType.$invalid || bookingForm.$submitted }">
+                            <label for="cardType" class="col-sm-3 control-label">Card type:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="cardType" id="cardType"
+                                       ng-model="payment.cardType"
+                                       placeholder="Card Type"
+                                       ng-maxlength="10"
+                                       required/>
+
+                                <div ng-messages="bookingForm.cardType.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.cardType.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="form-group"-->
+                             <!--ng-class="{ 'has-error': bookingForm.cardType.$touched && bookingForm.cardType.$invalid || bookingForm.$submitted }">-->
+                            <!--<label for="cardType" class="col-sm-3 control-label">Card Type</label>-->
+                            <!--<div class="col-sm-4">-->
+                                <!--<label class="radio-inline" data-ng-repeat="choice in cardtypes.choices">-->
+                                    <!--<input type="radio" name="cardType" id="cardType"-->
+                                           <!--ng-value="{{choice.selected}}"-->
+                                           <!--ng-model="payment.cardType"-->
+                                           <!--required/>-->
+                                    <!--{{choice.text}}-->
+                                <!--</label>-->
+
+                                <!--<div ng-messages="bookingForm.cardType.$error" class="help-block" role="alert"-->
+                                     <!--ng-if="bookingForm.$submitted || bookingForm.cardType.$touched" ng-messages-multiple>-->
+                                    <!--<div ng-messages-include="partials/messages.html"></div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.cardNumber.$touched && bookingForm.cardNumber.$invalid || bookingForm.$submitted }">
+                            <label for="cardNumber" class="col-sm-3 control-label">Card number:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="cardNumber" id="cardNumber"
+                                       ng-model="payment.cardNumber"
+                                       placeholder="Card Number"
+                                       ng-maxlength="20"
+                                       required/>
+
+                                <div ng-messages="bookingForm.cardNumber.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.cardNumber.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.cardExpiration.$touched && bookingForm.cardExpiration.$invalid || bookingForm.$submitted }">
+                            <label for="cardExpiration" class="col-sm-3 control-label">Card expiration:</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="cardExpiration" id="cardExpiration"
+                                       ng-model="payment.cardExpiration"
+                                       placeholder="Card Expiration"
+                                       ng-maxlength="45"
+                                       required/>
+
+                                <div ng-messages="bookingForm.cardExpiration.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.cardExpiration.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.paymentAmount.$touched && bookingForm.paymentAmount.$invalid || bookingForm.$submitted }">
+                            <label for="paymentAmount" class="col-sm-3 control-label">Payment Amount</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="paymentAmount" id="paymentAmount"
+                                       placeholder="Payment Amount"
+                                       ng-model="payment.paymentAmount"
+                                       ng-maxlength="7"
+                                       required
+                                       price/>
+
+                                <div ng-messages="bookingForm.paymentAmount.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.paymentAmount.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group"
+                             ng-class="{ 'has-error': bookingForm.description.$touched && bookingForm.description.$invalid || bookingForm.$submitted }">
+                            <label for="description" class="col-sm-3 control-label">Description</label>
+                            <div class="col-sm-8">
+        <textarea rows="10" class="form-control" name="description" id="description"
+                  placeholder="Description"
+                  ng-model="payment.description"
+                  required></textarea>
+
+                                <div ng-messages="bookingForm.description.$error" class="help-block" role="alert"
+                                     ng-if="bookingForm.$submitted || bookingForm.description.$touched" ng-messages-multiple>
+                                    <div ng-messages-include="partials/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" class="btn btn-primary dpanelbutton"
+                               ng-disabled="bookingForm.$invalid"
+                               value="Submit"/>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</form>

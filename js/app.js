@@ -66,10 +66,10 @@ hotelAdmin.config(function ($stateProvider, $httpProvider, $urlRouterProvider, $
         controller: 'ReservationSearchController'
     }).state('newBooking', {
         url: '/newBooking',
-        templateUrl: 'partials/newbooking.html',
+        templateUrl: 'partials/booking-add.html',
         controller: 'NewBookingController'
     });
-}).run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
+}).run(function ($rootScope, $state, AuthService, AUTH_EVENTS, $window) {
 
     $rootScope.authenticated;
 
@@ -92,5 +92,15 @@ hotelAdmin.config(function ($stateProvider, $httpProvider, $urlRouterProvider, $
             }
         }
     });
+
+    // back button implementation for global access on every template
+    $rootScope.returnBack = function() {
+        $window.history.back();
+    };
+
+    // printing page
+    $rootScope.printPage = function() {
+        window.print();
+    };
 });
 
